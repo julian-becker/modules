@@ -7,8 +7,11 @@ int main() {
 
 	ModuleLoader loader;
 	auto module1 = loader.load(ModuleFile::from("libmodule1.dylib"));
-	auto iface = module1.getInterface();
+	auto module2 = loader.load(ModuleFile::from("libmodule2.dylib"));
+	auto iface1 = module1.getInterface();
+	auto iface2 = module2.getInterface();
 
-	(*iface)((void*)0);
+	(*iface1)((void*)0);
+	(*iface2)((void*)0);
 	return 0;	
 }

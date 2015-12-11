@@ -26,8 +26,8 @@ ModuleFile::get() {
 
 
 Module 
-ModuleLoader::load(ModuleFile) {
-	module_handle lib = dlopen("libmodule1.dylib", RTLD_LAZY);
+ModuleLoader::load(ModuleFile module) {
+	module_handle lib = dlopen(module.get(), RTLD_LAZY);
 
 	if (lib == nullptr)
 		throw "error loading module dylib";
