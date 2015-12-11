@@ -1,6 +1,7 @@
 #include <iostream>
 #include <ModuleLoader.h>
 #include <Module.h>
+#include <ModuleDefinition.h>
 
 int main() {
 	std::cout << "Hello World from APP1!" << std::endl;
