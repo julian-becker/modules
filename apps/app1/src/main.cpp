@@ -1,7 +1,6 @@
 #include <iostream>
 #include <ModuleLoader.h>
 #include <Module.h>
-#include <ModuleDefinition.h>
 
 int main() {
 	std::cout << "Hello World from APP1!" << std::endl;
@@ -12,7 +11,9 @@ int main() {
 	auto iface1 = module1.getInterface();
 	auto iface2 = module2.getInterface();
 
-	(*iface1)((void*)0);
-	(*iface2)((void*)0);
+	auto say_hello = (void*(*)())(*iface1)(0x0000000000000000ul);
+	say_hello();
+	auto say_goodbye = (void*(*)())(*iface2)(0x1000000000000000ul);
+	say_goodbye();
 	return 0;	
 }

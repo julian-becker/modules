@@ -1,10 +1,12 @@
 #ifndef MODULEDEFINITION_H
 #define MODULEDEFINITION_H
 
+#include <cstdint>
+
 #define MODULE_API_VERSION 1u
 
 extern "C" {
-  typedef void (*ModuleInterfaceFn)(void*);
+  typedef void* (*ModuleInterfaceFn)(uint64_t service);
 }
 
 typedef struct {
@@ -14,11 +16,12 @@ typedef struct {
     ModuleInterfaceFn interface;
 } ModuleIdentity;
 
-#define DEFINE_MODULE(pluginName, interface, uuid) \
+#define DEFINE_MODULE(pluginName, interface, UUID)      \
   extern "C" {                                          \
+      void* interface(uint64_t);       \
       ModuleIdentity identity =  {                      \
           MODULE_API_VERSION,                           \
-          uuid,                                         \
+          UUID,                                         \
           pluginName,                                   \
           interface                                     \
       };                                                \

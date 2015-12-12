@@ -1,6 +1,6 @@
 #include <Module.h>
 #include <dlfcn.h>
-#include <ModuleDefinition.h>
+#include <modules/ModuleDefinition.h>
 
 Module::Module(void* handle)
 	: handle(handle) 

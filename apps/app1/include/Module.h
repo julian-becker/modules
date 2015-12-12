@@ -1,9 +1,7 @@
 #ifndef MODULE_H
 #define MODULE_H
 
-extern "C" {
-	typedef void (*module_interface_t)(void*);
-}
+#include <modules/ModuleDefinition.h>
 
 class Module {
 	void* handle;
@@ -12,7 +10,7 @@ public:
 	Module(void* handle);
 	~Module();
 
-	module_interface_t
+	ModuleInterfaceFn
 	getInterface();
 };
 
