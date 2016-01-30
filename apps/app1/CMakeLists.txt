@@ -5,9 +5,11 @@ set (PROJECT_INCLUDE_DIR ${PROJECT_SOURCE_DIR}/include)
 set (PROJECT_SOURCE_DIR ${CMAKE_CURRENT_SOURCE_DIR}/src)
  
 set(APP_SRCS
-	${PROJECT_SOURCE_DIR}/main.cpp 
-	${PROJECT_SOURCE_DIR}/Module.cpp 
-	${PROJECT_SOURCE_DIR}/ModuleLoader.cpp 
+	${PROJECT_SOURCE_DIR}/main.cpp
+	${PROJECT_SOURCE_DIR}/Module.cpp
+	${PROJECT_SOURCE_DIR}/ModuleLoader.cpp
+	${PROJECT_SOURCE_DIR}/ModuleLocator.cpp
+	${PROJECT_SOURCE_DIR}/ModuleFile.cpp
 )
  
 include_directories("${PROJECT_BINARY_DIR}")

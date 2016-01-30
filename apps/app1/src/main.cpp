@@ -1,5 +1,6 @@
 #include <iostream>
 #include <ModuleLoader.h>
+#include <ModuleFile.h>
 #include <Module.h>
 
 int main() {
