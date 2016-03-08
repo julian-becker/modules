@@ -2,7 +2,7 @@ cmake_minimum_required(VERSION 3.3)
 project (rootproject)
 
 
-set(CMAKE_CXX_STANDARD 11)
+set(CMAKE_CXX_STANDARD 14)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 
@@ -24,5 +24,6 @@ include_directories("${PROJECT_SOURCE_DIR}")
  
 add_subdirectory(modules/module1)
 add_subdirectory(modules/module2)
+add_subdirectory(modules/module3)
 
 add_subdirectory(apps/app1)

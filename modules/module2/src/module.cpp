@@ -3,7 +3,7 @@
 #include <cstdint>
 #include <unordered_map>
 
-DEFINE_MODULE("Module1", module_interface, "BE719CA6-A04B-11E5-9F84-C2ED68A460B9");
+DEFINE_MODULE("Module2", module_interface, "BE719CA6-A04B-11E5-9F84-C2ED68A460B9");
 
 
 extern "C" {
