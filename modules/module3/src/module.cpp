@@ -11,12 +11,12 @@ extern "C" void run_tests() {
 	run_mpl_tests();
 }
 
-static std::unordered_map<uint64_t,void*> services {
-	{0x0000000000000010ul,(void*)run_tests}
+static std::unordered_map<std::string,void*> services {
+	{"6f083237-c2a8-4f59-a8e8-17103a1f47a6",(void*)run_tests}
 };
 
 extern "C" void* 
-module_interface(uint64_t service) {
+module_interface(char const* service) {
 	return services[service];
 }
 

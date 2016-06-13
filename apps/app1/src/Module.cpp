@@ -2,18 +2,19 @@
 #include <dlfcn.h>
 #include <modules/ModuleDefinition.h>
 
-Module::Module(void* handle)
-	: handle(handle) 
+Module::Module(std::shared_ptr<void> handle)
+	: handle(std::move(handle))
 {}
 
 Module::~Module() {}
 
 ModuleInterfaceFn
 Module::getInterface() {
-	auto identity = (const ModuleIdentity*)dlsym(handle,"identity");
+	auto identity = (const ModuleIdentity*)dlsym(handle.get(),"identity");
 
-	if (identity == nullptr)
-		throw "error getting module interface";
+	if (identity == nullptr) {
+		throw dlerror();
+	}
 
 	return identity->interface;
 }

@@ -1,7 +1,8 @@
 #include <ModuleFile.h>
 #include <dlfcn.h>
+#include <memory>
 
-typedef void* module_handle;
+typedef std::shared_ptr<void> module_handle;
 
 
 // ----------------------------------------

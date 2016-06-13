@@ -46,7 +46,7 @@ private:
 
 	virtual std::tuple<int,std::string> executeStateTransition_impl(const int& state, const int& value) override {
 		std::stringstream s; s << "state=" << state << ", value=" << value;
-		return std::make_tuple(state+value,s.str());
+		return std::make_tuple(state+1,s.str());
 	}
 };
 
@@ -55,6 +55,12 @@ private:
 void run_mpl_tests() {
     TestTask t;
     t.execute();
+    t.execute();
+    auto s = t.createMemento();
+    t.execute();
+    t.execute();
+    t.execute();
+    t.applyMemento(0);
     t.execute();
     t.execute();
 

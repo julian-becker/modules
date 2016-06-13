@@ -1,8 +1,7 @@
 #include <ModuleLoader.h>
 #include <ModuleFile.h>
 #include <dlfcn.h>
-
-typedef void* module_handle;
+#include <iostream>
 
 
 // ----------------------------------------
@@ -10,11 +9,12 @@ typedef void* module_handle;
 
 Module 
 ModuleLoader::load(const ModuleFile& module) {
-	module_handle lib = dlopen(module.get(), RTLD_LAZY);
+	auto lib = std::shared_ptr<void>(dlopen(module.get(), RTLD_LAZY), 
+		[](void* p) { if(p) dlclose(p); });
 
-	if (lib == nullptr)
-		throw "error loading module dylib";
+	if (!lib) {
+		throw dlerror();
+	}
 
-	return Module(lib);
+	return Module(std::move(lib));
 }
-

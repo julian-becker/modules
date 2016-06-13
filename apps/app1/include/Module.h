@@ -2,12 +2,13 @@
 #define MODULE_H
 
 #include <modules/ModuleDefinition.h>
+#include <memory>
 
 class Module {
-	void* handle;
+	std::shared_ptr<void> handle;
 	
 public:
-	Module(void* handle);
+	Module(std::shared_ptr<void> handle);
 	~Module();
 
 	ModuleInterfaceFn

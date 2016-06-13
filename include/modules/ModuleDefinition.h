@@ -6,7 +6,7 @@
 #define MODULE_API_VERSION 1u
 
 extern "C" {
-  typedef void* (*ModuleInterfaceFn)(uint64_t service);
+  typedef void* (*ModuleInterfaceFn)(char const* service);
 }
 
 typedef struct {
@@ -18,7 +18,7 @@ typedef struct {
 
 #define DEFINE_MODULE(pluginName, interface, UUID)      \
   extern "C" {                                          \
-      void* interface(uint64_t);       \
+      void* interface(char const*);                     \
       ModuleIdentity identity =  {                      \
           MODULE_API_VERSION,                           \
           UUID,                                         \
